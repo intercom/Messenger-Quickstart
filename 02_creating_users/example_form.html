@@ -3,23 +3,20 @@
     <head>
         <title>Basic Form</title>
 		<script type="text/javascript">
-			window.onload = function(){
-				var name = document.getElementById("name").value;
-				var email = document.getElementById("email").value;
-			    document.getElementById('submit').onclick = function(e){
-			       alert("Your name is " + name " and your email is " + email);
-			       return false;
-			    }
-			}
+		 function popup(){
+			var name = document.getElementById("name").value;
+			var email = document.getElementById("email").value;
+			alert("Your name is " + name + " Your email is " + email)
+		}
 		</script>
     </head>
     <body>
     	<form>
 		  Name:<br>
-		  <input type="text" name="email" id="email"><br>
+		  <input type="text" name="name" id="name"><br>
 		  Email:<br>
-		  <input type="text" name="name" id="name">
-		  <button id="submit">Submit</button>
+		  <input type="text" name="email" id="email">
+		  <button id="submit" onclick="popup()">Submit</button>
 		</form>
     </body>
 </html>
