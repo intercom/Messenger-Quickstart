@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.3/js.cookie.min.js"></script>
+        <script>
+            $(document).ready(function() {
+              $("#userId").val(getUserId());
+              $("#email").val(getEmail());
+              $("#name").val(getName());
+
+              $("#save").click(function() {
+                Cookies.set("user_id", $("#user_id").val());
+                Cookies.set("email", $("#email").val());
+                Cookies.set("name", $("#name").val());
+
+                location.reload();
+              });
+            });
+
+            function getUserId() {
+              return Cookies.get("userId") || 12345;
+            }
+
+            function getEmail() {
+              return Cookies.get("email") || "jonsnow@nothing.test";
+            }
+
+            function getName(){
+                return Cookies.get("name") || "Jon Snow";
+            }
+          </script>
+    </head>
+    <body>  
+        <script>
+            var myAppId = "";
+            var userEmail = getEmail();
+            var userId = getUserId();
+            var userName = getName();
+  			window.intercomSettings = {
+		    	app_id: myAppId,
+                email: userEmail,
+                user_id: userId,
+                name: userName
+			};
+		</script>
+		<script>
+		(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/' + myAppId ;var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()
+		</script>
+
+        <body>
+        <form>
+          Name:<br>
+          <input type="text" name="name" id="name" placeholder="Jon Snow"><br>
+          Email:<br>
+          <input type="text" name="email" id="email" placeholder="jonsnow@nothing.org"><br>
+          User ID:<br>
+          <input type="text" name="userId" id="userId" placeholder="12345"><br>
+          <button id="submit">Save &amp; Reload</button>
+        </form>
+    </body>
+    </body>
+</html>
