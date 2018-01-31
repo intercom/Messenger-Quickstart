@@ -1,0 +1,25 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <title>Basic Form</title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var name = document.getElementById("name").value;
+				var email = document.getElementById("email").value;
+			    document.getElementById('submit').onclick = function(e){
+			       alert("Your name is " + name " and your email is " + email);
+			       return false;
+			    }
+			}
+		</script>
+    </head>
+    <body>
+    	<form>
+		  Name:<br>
+		  <input type="text" name="email" id="email"><br>
+		  Email:<br>
+		  <input type="text" name="name" id="name">
+		  <button id="submit">Submit</button>
+		</form>
+    </body>
+</html>
