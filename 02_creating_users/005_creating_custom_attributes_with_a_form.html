@@ -9,11 +9,13 @@
               $("#userId").val(getUserId());
               $("#email").val(getEmail());
               $("#name").val(getName());
+              $("#numberOfDirewolves").val(getNumberOfDirewolves());
 
               $("#save").click(function() {
                 localStorage.setItem("userId", $("#userId").val());
                 localStorage.setItem("email", $("#email").val());
                 localStorage.setItem("name", $("#name").val());
+                localStorage.setItem("numberOfDirewolves", $("#numberOfDirewolves").val());
 
                 location.reload();
               });
@@ -28,10 +30,13 @@
             }
 
             function getName(){
-                return localStorage.getItem("name") || "Jon Snow";
+              return localStorage.getItem("name") || "Jon Snow";
             }
 
-          </script>
+            function getNumberOfDirewolves(){
+              return localStorage.getItem("numberOfDirewolves");
+            }
+        </script>
     </head>
     <body>  
         <script>
@@ -39,16 +44,19 @@
             var userEmail = getEmail();
             var userId = getUserId();
             var userName = getName();
-  			window.intercomSettings = {
-		    	app_id: myAppId,
-                email: userEmail,
-                user_id: userId,
-                name: userName
-			};
-		</script>
-		<script>
-		(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/' + myAppId ;var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()
-		</script>
+            var numberOfDirewolves = getNumberOfDirewolves();
+
+      			window.intercomSettings = {
+    		    	app_id: myAppId,
+              email: userEmail,
+              user_id: userId,
+              name: userName,
+              "number_of_direwolves": numberOfDirewolves
+    		};
+    		</script>
+    		<script>
+    		  (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/' + myAppId ;var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()
+    		</script>
         <form>
           Name:<br>
           <input type="text" name="name" id="name" placeholder="Jon Snow"><br>
@@ -56,8 +64,11 @@
           <input type="text" name="email" id="email" placeholder="jonsnow@nothing.org"><br>
           User ID:<br>
           <input type="text" name="userId" id="userId" placeholder="12345"><br>
+          Number of Direwolves<br>
+          <input type="text" name="numberOfDirewolves" id="numberOfDirewolves" placeholder="0"><br>
           <button id="save">Save &amp; Reload</button>
         </form>
     </body>
 </html>
+
 
